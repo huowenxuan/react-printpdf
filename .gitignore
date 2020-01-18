@@ -1,0 +1,40 @@
+node_modules
+npm-debug.log
+start.sh
+.avoscloud
+.idea
+.vscode
+logs
+run
+app/public/tmp
+output.pdf
+coverage
+apidoc
+# VIM
+*~
+*.swp
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+src/react-app-env.d.ts
+
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
