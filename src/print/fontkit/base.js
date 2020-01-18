@@ -12,15 +12,14 @@ fontkit.registerFormat = function (format) {
   formats.push(format)
 }
 
-fontkit.openFont = async (postscriptName) => {
+fontkit.openFont = async (font, postscriptName) => {
   let isNode = global.constructor.name === 'Window' ? false : true
   if (isNode) {
-    const filePath = __dirname + '/../MSYH.otf'
-    let buffer = require('fs').readFileSync(filePath)
+    let buffer = require('fs').readFileSync(font)
     return fontkit.create(buffer, postscriptName)
   } else {
     return new Promise((resolve, reject) => {
-      fetch('/MSYH.otf')
+      fetch(font)
         .then(res => res.blob())
         .then((blob) => {
           let reader = new FileReader()

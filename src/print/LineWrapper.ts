@@ -1,6 +1,8 @@
-import fontkit from './fontkit';
+import fontkit from './fontkit'
+
 const LineBreaker = require('./linebreak/linebreaker')
-const EventEmitter = require('events');
+const EventEmitter = require('events')
+
 // const LineBreaker = require('linebreak')
 
 class Font {
@@ -12,6 +14,7 @@ class Font {
   lineGap
   bbox
   layoutCache: any[] = []
+
   constructor(options) {
     const {font} = options
     this.font = font
@@ -46,7 +49,7 @@ class Font {
   layout(text, features, onlyWidth) {
     if (features) return this.layoutRun(text, features)
     let glyphs: any = onlyWidth ? null : []
-    let positions : any = onlyWidth ? null : []
+    let positions: any = onlyWidth ? null : []
     let advanceWidth = 0 // Split the string by words to increase cache efficiency.
 
     let last = 0
@@ -84,20 +87,28 @@ export default class LineWrapper extends EventEmitter {
   lineWidth
   spaceLeft
   startX = 0
-  startY = 0
   column = 1
   ellipsis
   continuedX = 0
   features
-  lastLine
   font
-  constructor(options) {
+  fontSize
+  fontPath
+
+  constructor(public options) {
     super()
-    options = options || {}
+    this.options = options || {}
+    this.setMaxListeners(Infinity) // 取消添加过的的监听器超过上限警告
+    this.refresh()
+  }
+
+  refresh() {
+    const {options} = this
     const {
       width = 500,
     } = options
     this.indent = options.indent || 0
+    this.fontSize = options.fontSize || 16
     this.characterSpacing = options.characterSpacing || 0
     this.wordSpacing = options.wordSpacing === 0
     this.columns = options.columns || 1
@@ -107,8 +118,8 @@ export default class LineWrapper extends EventEmitter {
     this.spaceLeft = this.lineWidth
     this.ellipsis = options.ellipsis
     this.features = options.features
+    this.fontPath = options.font
 
-    // handle paragraph indents
     this.on('firstLine', options => {
       // if this is the first line of the text segment, and
       // we're continuing where we left off, indent that much
@@ -133,24 +144,28 @@ export default class LineWrapper extends EventEmitter {
       if (align === 'justify') {
         options.align = 'left'
       }
-      this.lastLine = true
 
       return this.once('line', () => {
         options.align = align
-        return (this.lastLine = false)
       })
     })
   }
 
   async initFont() {
+    if (this.font) return
     this.font = new Font({
-      font: await fontkit.openFont()
+      font: await fontkit.openFont(this.fontPath)
     })
+  }
+
+  end() {
+    this.removeAllListeners('line')
+    this.removeAllListeners('sectionEnd')
   }
 
   wordWidth(word) {
     return (
-      this.font.widthOfString(word, 16) +
+      this.font.widthOfString(word, this.fontSize) +
       this.characterSpacing +
       this.wordSpacing
     )
@@ -236,7 +251,10 @@ export default class LineWrapper extends EventEmitter {
     }
   }
 
-  wrap(text, options) {
+  async wrap(text, options) {
+    this.refresh()
+    await this.initFont()
+
     // override options from previous continued fragments
     if (options.indent != null) {
       this.indent = options.indent
@@ -315,6 +333,7 @@ export default class LineWrapper extends EventEmitter {
     }
 
     this.emit('sectionEnd', options, this)
+    this.end()
 
     // if the wrap is set to be continued, save the X position
     // to start the first line of the next segment at, and reset

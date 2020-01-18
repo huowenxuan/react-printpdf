@@ -6,8 +6,9 @@ import fontkit from "./print/fontkit"
 
 import LineWrapper from './print/LineWrapper'
 
-let text = '一段需要word。 wrap的文字wewewewewewewe...wewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewe招风耳发的顺丰刹车阿斯UC阿斯醋还是和菜市场啊安士才吓死偶会 暗示擦啥是赤壁哦'
+let body = '一段需要word。 wrap的文字wewewewewewewe...wewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewe招风耳发的顺丰刹车阿斯UC阿斯醋还是和菜市场啊安士才吓死偶会 暗示擦啥是赤壁哦'
 const textOptions = {
+  font: '/MSYH.otf',
   width: 300,
   characterSpacing: 2,
 }
@@ -19,12 +20,7 @@ wrapper.on('line', (l) => {
 })
 wrapper.on('sectionEnd', () => {
 })
-wrapper.initFont()
-  .then(() => {
-    console.log('1')
-    wrapper.wrap(text, {})
-    console.log('2')
-  })
+wrapper.wrap(body, {})
 
 function App() {
   return (
