@@ -94,6 +94,7 @@ export default class LineWrapper extends EventEmitter {
   font
   fontSize
   fontPath
+  width
 
   constructor(public options) {
     super()
@@ -160,7 +161,11 @@ export default class LineWrapper extends EventEmitter {
 
   end() {
     this.removeAllListeners('line')
-    this.removeAllListeners('sectionEnd')
+  }
+
+  setOptions(fontsize, width){
+    this.options.fontSize = fontsize
+    this.options.width = width
   }
 
   wordWidth(word) {
@@ -333,7 +338,7 @@ export default class LineWrapper extends EventEmitter {
     }
 
     this.emit('sectionEnd', options, this)
-    this.end()
+    this.removeAllListeners('sectionEnd')
 
     // if the wrap is set to be continued, save the X position
     // to start the first line of the next segment at, and reset
