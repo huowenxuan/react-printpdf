@@ -1,3 +1,4 @@
+/* eslint-disable */
 const TUPLES_SHARE_POINT_NUMBERS = 0x8000;
 const TUPLE_COUNT_MASK           = 0x0fff;
 const EMBEDDED_TUPLE_COORD       = 0x8000;

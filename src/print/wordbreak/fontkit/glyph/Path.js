@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import BBox from './BBox';
 
 const SVG_COMMANDS = {

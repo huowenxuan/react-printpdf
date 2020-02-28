@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import {cache} from '../decorators';
 import {range} from '../utils';
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import BBox from '../glyph/BBox';
 import * as Script from '../layout/Script';
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import fontkit from "./print/wordbreak/fontkit"
+// import fontkit from "./print/wordbreak/fontkit"
 
 // import LineWrapper from './print/LineWrapper'
 // let body = '一段需要word。 wrap的文字wewewewewewewe...wewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewewe招风耳发的顺丰刹车阿斯UC阿斯醋还是和菜市场啊安士才吓死偶会 暗示擦啥是赤壁哦'

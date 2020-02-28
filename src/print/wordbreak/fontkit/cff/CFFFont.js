@@ -1,7 +1,4 @@
-import * as r from 'restructure';
-import CFFIndex from './CFFIndex';
 import CFFTop from './CFFTop';
-import CFFPrivateDict from './CFFPrivateDict';
 import standardStrings from './CFFStandardStrings';
 
 class CFFFont {
@@ -15,7 +12,6 @@ class CFFFont {
   }
 
   decode() {
-    let start = this.stream.pos;
     let top = CFFTop.decode(this.stream);
     for (let key in top) {
       let val = top[key];
@@ -102,6 +98,8 @@ class CFFFont {
           }
         }
         break;
+
+      default: break;
     }
 
     return null;
@@ -133,6 +131,7 @@ class CFFFont {
             return ranges[mid].fd;
           }
         }
+        break;
       default:
         throw new Error(`Unknown FDSelect version: ${this.topDict.FDSelect.version}`);
     }

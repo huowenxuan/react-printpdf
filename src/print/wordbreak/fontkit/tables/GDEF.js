@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as r from 'restructure';
 import {ScriptList, FeatureList, LookupList, Coverage, ClassDef, Device} from './opentype';
 import {ItemVariationStore} from './variations';

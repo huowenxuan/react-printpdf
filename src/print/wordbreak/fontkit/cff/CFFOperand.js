@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const FLOAT_EOF = 0xf;
 const FLOAT_LOOKUP = [
   '0', '1', '2', '3', '4', '5', '6', '7',

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import cloneDeep from 'clone';
 import Subset from './Subset';
 import Directory from '../tables/directory';

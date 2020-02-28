@@ -16,7 +16,7 @@ export function cache(target, key, descriptor) {
 
     return {
       get() {
-        let cache = new Map;
+        let cache = new Map();
         function memoized(...args) {
           let key = args.length > 0 ? args[0] : 'value';
           if (cache.has(key)) {

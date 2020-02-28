@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import OTProcessor from './OTProcessor';
 
 export default class GPOSProcessor extends OTProcessor {

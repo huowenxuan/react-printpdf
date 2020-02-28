@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import AATLookupTable from './AATLookupTable';
 
 const START_OF_TEXT_STATE = 0;

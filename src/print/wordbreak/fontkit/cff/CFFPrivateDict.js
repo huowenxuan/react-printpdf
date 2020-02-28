@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import CFFDict from './CFFDict';
 import CFFIndex from './CFFIndex';
 import CFFPointer from './CFFPointer';

@@ -257,7 +257,10 @@ export default class OTProcessor {
         }
 
         break;
+      default:
+        break;
     }
+  
 
     return -1;
   }
@@ -323,6 +326,8 @@ export default class OTProcessor {
         }
 
         break;
+      default:
+        break;
     }
 
     return 0;
@@ -376,6 +381,8 @@ export default class OTProcessor {
         }
 
         break;
+      default:
+        break;
     }
 
     return false;
@@ -428,6 +435,8 @@ export default class OTProcessor {
           return this.applyLookupList(table.lookupRecords);
         }
 
+        break;
+      default:
         break;
     }
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as Script from '../../layout/Script';
 import GlyphInfo from '../GlyphInfo';
 import {
@@ -183,7 +185,7 @@ function initialReordering(font, glyphs, plan) {
   }
 
   for (let start = 0, end = nextSyllable(glyphs, 0); start < glyphs.length; start = end, end = nextSyllable(glyphs, start)) {
-    let {category, syllableType} = glyphs[start].shaperInfo;
+    let {syllableType} = glyphs[start].shaperInfo;
 
     if (syllableType === 'symbol_cluster' || syllableType === 'non_indic_cluster') {
       continue;
@@ -305,7 +307,10 @@ function initialReordering(font, glyphs, plan) {
             glyphs[i].shaperInfo.position = POSITIONS.Below_C;
           }
         }
+        break
       }
+  
+      default: break
     }
 
     // If the syllable starts with Ra + Halant (in a script that has Reph)
@@ -418,7 +423,8 @@ function initialReordering(font, glyphs, plan) {
     let lastPos = POSITIONS.Start;
     for (let i = start; i < end; i++) {
       let info = glyphs[i].shaperInfo;
-      if (info.category & (JOINER_FLAGS | CATEGORIES.N | CATEGORIES.RS | CATEGORIES.CM | HALANT_OR_COENG_FLAGS & info.category)) {
+      // 这里 去掉!!
+      if (!!(info.category & (JOINER_FLAGS | CATEGORIES.N | CATEGORIES.RS | CATEGORIES.CM | HALANT_OR_COENG_FLAGS & info.category))) {
         info.position = lastPos;
         if (info.category === CATEGORIES.H && info.position === POSITIONS.Pre_M) {
           // Uniscribe doesn't move the Halant with Left Matra.

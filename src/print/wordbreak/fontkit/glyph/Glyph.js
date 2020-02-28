@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { cache } from '../decorators';
 import Path from './Path';
 import StandardNames from './StandardNames';

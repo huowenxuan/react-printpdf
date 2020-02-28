@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import isEqual from 'deep-equal';
 import * as r from 'restructure';
 import CFFOperand from './CFFOperand';

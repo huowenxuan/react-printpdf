@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import KernProcessor from './KernProcessor';
 import UnicodeLayoutEngine from './UnicodeLayoutEngine';
 import GlyphRun from './GlyphRun';

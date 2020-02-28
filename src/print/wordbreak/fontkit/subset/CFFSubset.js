@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Subset from './Subset';
 import CFFTop from '../cff/CFFTop';
 import CFFPrivateDict from '../cff/CFFPrivateDict';

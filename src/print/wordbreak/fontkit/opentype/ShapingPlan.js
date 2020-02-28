@@ -1,4 +1,3 @@
-import * as Script from '../layout/Script';
 
 /**
  * ShapingPlans are used by the OpenType shapers to store which

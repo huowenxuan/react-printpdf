@@ -14,6 +14,7 @@ class VariableSizeNumber {
       case 2: return stream.readUInt16BE();
       case 3: return stream.readUInt24BE();
       case 4: return stream.readUInt32BE();
+      default: return stream.readUInt8();
     }
   }
 

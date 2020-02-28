@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as r from 'restructure';
 
 const Base128 = {

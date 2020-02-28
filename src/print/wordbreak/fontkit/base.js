@@ -1,7 +1,5 @@
 import * as r from 'restructure'
 
-const fs = require('fs')
-
 var fontkit = {}
 export default fontkit
 

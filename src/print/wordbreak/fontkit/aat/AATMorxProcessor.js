@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import AATStateMachine from './AATStateMachine';
 import AATLookupTable from './AATLookupTable';
 import {cache} from '../decorators';
@@ -19,13 +21,13 @@ const LAST_MASK   = 0x80000000;
 const STORE_MASK  = 0x40000000;
 const OFFSET_MASK = 0x3FFFFFFF;
 
-const VERTICAL_ONLY           = 0x800000;
+// const VERTICAL_ONLY           = 0x800000;
 const REVERSE_DIRECTION       = 0x400000;
-const HORIZONTAL_AND_VERTICAL = 0x200000;
+// const HORIZONTAL_AND_VERTICAL = 0x200000;
 
 // glyph insertion flags
-const CURRENT_IS_KASHIDA_LIKE = 0x2000;
-const MARKED_IS_KASHIDA_LIKE  = 0x1000;
+// const CURRENT_IS_KASHIDA_LIKE = 0x2000;
+// const MARKED_IS_KASHIDA_LIKE  = 0x1000;
 const CURRENT_INSERT_BEFORE   = 0x0800;
 const MARKED_INSERT_BEFORE    = 0x0400;
 const CURRENT_INSERT_COUNT    = 0x03E0;
@@ -149,7 +151,7 @@ export default class AATMorxProcessor {
       let lookup = subsitutions.getItem(entry.currentIndex);
       let lookupTable = new AATLookupTable(lookup);
       glyph = this.glyphs[index];
-      var gid = lookupTable.lookup(glyph.id);
+      gid = lookupTable.lookup(glyph.id);
       if (gid) {
         this.glyphs[index] = this.font.getGlyph(gid, glyph.codePoints);
       }
@@ -183,6 +185,7 @@ export default class AATMorxProcessor {
         let action = actions.getItem(actionIndex++);
         last = !!(action & LAST_MASK);
         let store = !!(action & STORE_MASK);
+        // eslint-disable-next-line no-mixed-operators
         let offset = (action & OFFSET_MASK) << 2 >> 2; // sign extend 30 to 32 bits
         offset += this.glyphs[componentGlyph].id;
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Glyph from './Glyph';
 import Path from './Path';
 

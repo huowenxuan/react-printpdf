@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import TTFFont from './TTFFont';
 import WOFFDirectory from './tables/WOFFDirectory';
 import tables from './tables';

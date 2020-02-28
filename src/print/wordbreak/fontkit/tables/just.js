@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as r from 'restructure';
 import { LookupTable, StateTable1 } from './aat';
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as AATFeatureMap from './AATFeatureMap';
 import * as Script from '../layout/Script';
 import AATMorxProcessor from './AATMorxProcessor';

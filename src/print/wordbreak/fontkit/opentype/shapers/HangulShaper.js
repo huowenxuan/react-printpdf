@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import DefaultShaper from './DefaultShaper';
 import GlyphInfo from '../GlyphInfo';
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as r from 'restructure';
 import { resolveLength } from 'restructure/src/utils';
 import CFFDict from './CFFDict';

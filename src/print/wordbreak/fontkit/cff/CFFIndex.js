@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as r from 'restructure';
 
 export default class CFFIndex {

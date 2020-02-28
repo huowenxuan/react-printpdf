@@ -15,7 +15,7 @@ class COLRLayer {
  */
 export default class COLRGlyph extends Glyph {
   _getBBox() {
-    let bbox = new BBox;
+    let bbox = new BBox();
     for (let i = 0; i < this.layers.length; i++) {
       let layer = this.layers[i];
       let b = layer.glyph.bbox;
@@ -68,9 +68,9 @@ export default class COLRGlyph extends Glyph {
     // otherwise, return an array of all the layers
     let layers = [];
     for (let i = baseLayer.firstLayerIndex; i < baseLayer.firstLayerIndex + baseLayer.numLayers; i++) {
-      var rec = colr.layerRecords[i];
-      var color = cpal.colorRecords[rec.paletteIndex];
-      var g = this._font._getBaseGlyph(rec.gid);
+      rec = colr.layerRecords[i];
+      color = cpal.colorRecords[rec.paletteIndex];
+      g = this._font._getBaseGlyph(rec.gid);
       layers.push(new COLRLayer(g, color));
     }
 

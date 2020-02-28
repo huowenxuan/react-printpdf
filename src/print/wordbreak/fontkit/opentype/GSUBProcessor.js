@@ -19,6 +19,9 @@ export default class GSUBProcessor extends OTProcessor {
           case 2:
             glyph.id = table.substitute.get(index);
             break;
+
+          default:
+              break;
         }
 
         return true;
@@ -156,7 +159,8 @@ export default class GSUBProcessor extends OTProcessor {
           if (lastLigID && !isMarkLigature) {
             for (let i = idx; i < this.glyphs.length; i++) {
               if (this.glyphs[i].ligatureID === lastLigID) {
-                var ligatureComponent = curComps - lastNumComps + Math.min(this.glyphs[i].ligatureComponent || 1, lastNumComps);
+                // 这里 去掉var
+                ligatureComponent = curComps - lastNumComps + Math.min(this.glyphs[i].ligatureComponent || 1, lastNumComps);
                 this.glyphs[i].ligatureComponent = ligatureComponent;
               } else {
                 break;
